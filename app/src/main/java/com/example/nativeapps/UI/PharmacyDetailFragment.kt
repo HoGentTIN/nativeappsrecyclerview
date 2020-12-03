@@ -28,9 +28,12 @@ class PharmacyDetailFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.pharmacy.observe(viewLifecycleOwner, Observer {
-            binding.tvPharmacyAddress.text = it.generateAddress()
-        })
+        viewModel.pharmacy.observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.tvPharmacyAddress.text = it.generateAddress()
+            }
+        )
 
         return binding.root
     }

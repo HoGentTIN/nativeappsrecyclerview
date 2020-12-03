@@ -10,6 +10,6 @@ data class PharmacyAndFields(
 
     @Relation(parentColumn = "recordid", entityColumn = "pharmacyId")
     val fields: PharmacyFields
-){
+) {
     fun generateAddress() = "${fields.street} ${fields.number}\n${fields.zip} ${fields.city}"
 }

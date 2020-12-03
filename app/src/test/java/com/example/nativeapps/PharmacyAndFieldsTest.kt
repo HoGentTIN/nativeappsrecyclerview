@@ -13,7 +13,15 @@ class PharmacyAndFieldsTest {
         val pharmacyAndFields = PharmacyAndFields(
             Pharmacy("id"),
             PharmacyFields(
-                "Spanjestraat", "COOP", "0612", "1", "090612","Hemel", "id"))
+                "Spanjestraat",
+                "COOP",
+                "0612",
+                "1",
+                "090612",
+                "Hemel",
+                "id"
+            )
+        )
 
         val address = pharmacyAndFields.generateAddress()
 
