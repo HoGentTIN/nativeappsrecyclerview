@@ -8,11 +8,11 @@ import com.example.nativeapps.repos.PharmacyRepository
 
 class PharmacyDetailViewModel(private val pharmacyRepository: PharmacyRepository) : ViewModel() {
 
-    private var _pharmacy = MutableLiveData<PharmacyAndFields>()
+    private lateinit var _pharmacy : LiveData<PharmacyAndFields>
     val pharmacy: LiveData<PharmacyAndFields>
         get() = _pharmacy
 
     fun updatePharmacy(pharmacyId: String) {
-        _pharmacy.value = pharmacyRepository.getPharmacy(pharmacyId).value
+        _pharmacy = pharmacyRepository.getPharmacy(pharmacyId)
     }
 }
