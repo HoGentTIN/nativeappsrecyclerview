@@ -1,7 +1,21 @@
 <resources>
     <string name="app_name">nativeapps</string>
     <string name="pharmacies_in_ghent">Pharmacies in Ghent</string>
-    <string name="show_pharmacy">Show Pharmacy</string>
+    <string name="call_pharmacy">Call Pharmacy</string>
+    <string name="route_pharmacy">Route</string>
+    <string name="geo_location">geo:0,0?q=%s</string>
+    <string name="phone">tel:%s</string>
     <string name="placeholder">Placeholder</string>
     <string name="placeholder_for_pharmacy">Placeholder for Pharmacy</string>
+    <string name="straatnaam">Straatnaam van de apotheek</string>
+    <string name="apotheeknaam">Naam van de apotheek</string>
+    <string name="nr">nummer</string>
+    <string name="postcode">Postcode van de Apotheek</string>
+    <string name="telefoonnummer">Telefoonnummer</string>
+    <string name="add">Voeg toe</string>
+    <string name="gemeente">Gemeente</string>
+    <string name="error_naam">De naam mag niet leeg zijn</string>
+    <string name="error_straat">De straatnaam mag niet leeg zijn</string>
+    <string name="google_maps_package">com.google.android.apps.maps</string>
+
 </resources>

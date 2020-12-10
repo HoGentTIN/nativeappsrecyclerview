@@ -25,6 +25,6 @@ class PharmacyAndFieldsTest {
 
         val address = pharmacyAndFields.generateAddress()
 
-        assertEquals("Spanjestraat 1\n0612 Hemel", address)
+        assertEquals("Spanjestraat 1 0612 Hemel", address)
     }
 }

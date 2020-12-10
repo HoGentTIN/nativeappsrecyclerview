@@ -43,7 +43,7 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
     .build()
 
 /**
- * Provide the retrofti instance
+ * Provide the retrofit instance
  */
 private fun provideRetrofit(
     okHttpClient: OkHttpClient,

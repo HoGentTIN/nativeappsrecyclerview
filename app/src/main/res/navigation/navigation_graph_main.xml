@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_pharmacyOverviewFragment_to_pharmacyDetailFragment"
             app:destination="@id/pharmacyDetailFragment" />
+        <action
+            android:id="@+id/action_pharmacyOverviewFragment_to_newPharmacyFragment"
+            app:destination="@id/newPharmacyFragment"
+            app:enterAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/pharmacyDetailFragment"
@@ -22,4 +26,9 @@
             android:name="pharmacyId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/newPharmacyFragment"
+        android:name="com.example.nativeapps.UI.NewPharmacyFragment"
+        android:label="new_pharmacy_fragment"
+        tools:layout="@layout/fragment_newpharmacy" />
 </navigation>

@@ -1,5 +1,7 @@
 package com.example.nativeapps.UI
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.nativeapps.R
 import com.example.nativeapps.adapters.PharmacyAdapter
 import com.example.nativeapps.adapters.PharmacyClickListener
 import com.example.nativeapps.data.local.PharmacyAndFields
@@ -32,6 +35,10 @@ class PharmacyOverviewFragment : Fragment(), PharmacyClickListener {
         val binding = FragmentPharmacyOverviewBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+        binding.fbNewpharmacy.setOnClickListener {
+            this.navigateToAddPharmacy()
+        }
 
         adapter = PharmacyAdapter(this)
         binding.adapter = adapter
@@ -75,11 +82,29 @@ class PharmacyOverviewFragment : Fragment(), PharmacyClickListener {
         navigateToDetail(pharmacy)
     }
 
+    override fun onCallClicked(phone: String) {
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.setData(Uri.parse(getString(R.string.phone, phone)))
+        startActivity(intent)
+    }
+
+    override fun onRouteClicked(address: String) {
+        val gmUri = Uri.parse(getString(R.string.geo_location, address))
+        val intent = Intent(Intent.ACTION_VIEW, gmUri)
+        intent.setPackage(getString(R.string.google_maps_package))
+        startActivity(intent)
+    }
+
     private fun navigateToDetail(pharmacyAndFields: PharmacyAndFields) {
         val directions =
             PharmacyOverviewFragmentDirections.actionPharmacyOverviewFragmentToPharmacyDetailFragment(
                 pharmacyAndFields.pharmacy.recordid
             )
-        findNavController().navigate(directions)
+        this.findNavController().navigate(directions)
+    }
+
+    private fun navigateToAddPharmacy() {
+        val directions = PharmacyOverviewFragmentDirections.actionPharmacyOverviewFragmentToNewPharmacyFragment()
+        this.findNavController().navigate(directions)
     }
 }

@@ -8,4 +8,7 @@ import androidx.room.OnConflictStrategy
 interface PharmacyFieldsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<PharmacyFields>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(pharmacy: PharmacyFields)
 }

@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="pharmacy"
@@ -23,10 +24,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/pharmacy"
                 android:contentDescription="@string/placeholder_for_pharmacy"
-                />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/pharmacy" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,25 +60,29 @@
             </LinearLayout>
 
             <!-- Buttons -->
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
+                android:layout_margin="8dp">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_pharmacy_detail_call"
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/show_pharmacy" />
+                    android:text="@string/call_pharmacy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_pharmacy_detail_route"
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/placeholder" />
-            </LinearLayout>
+                    android:text="@string/route_pharmacy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

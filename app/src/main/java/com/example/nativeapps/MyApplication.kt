@@ -6,6 +6,7 @@ import com.example.nativeapps.DI.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import timber.log.Timber
 
 class MyApplication : Application() {
 
@@ -18,6 +19,10 @@ class MyApplication : Application() {
                 networkModule,
                 viewModelModule
             )
+        }
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
         }
     }
 }

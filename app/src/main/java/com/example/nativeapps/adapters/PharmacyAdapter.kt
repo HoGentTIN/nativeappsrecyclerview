@@ -21,12 +21,7 @@ class PharmacyAdapter(private var pharmacyClickListener: PharmacyClickListener) 
 
     override fun onBindViewHolder(holder: PharmacyViewHolder, position: Int) {
         val pharmacy = getItem(position)
-        holder.bindData(pharmacy)
-        holder.itemView.setOnClickListener {
-            pharmacyClickListener.onPharmacyClicked(
-                pharmacy
-            )
-        }
+        holder.bindData(pharmacy, pharmacyClickListener)
     }
 }
 
@@ -42,4 +37,6 @@ private class PharmacyDiffCallback : DiffUtil.ItemCallback<PharmacyAndFields>() 
 
 interface PharmacyClickListener {
     fun onPharmacyClicked(pharmacy: PharmacyAndFields)
+    fun onCallClicked(phone: String)
+    fun onRouteClicked(address: String)
 }

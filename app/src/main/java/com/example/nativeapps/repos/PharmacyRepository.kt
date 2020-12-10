@@ -2,6 +2,7 @@ package com.example.nativeapps.repos
 
 import com.example.nativeapps.data.local.PharmacyLocalDataSource
 import com.example.nativeapps.data.remote.PharmacyRemoteDataSource
+import com.example.nativeapps.model.PharmacyFieldsModel
 import com.example.nativeapps.util.performGetOperation
 
 class PharmacyRepository(
@@ -16,4 +17,8 @@ class PharmacyRepository(
         networkCall = { pharmacyRemoteDataSource.getPharmacies() },
         saveCallResult = { pharmacyLocalDataSource.savePharmacies(it.records) }
     )
+
+    suspend fun createPharmacy(pharmacy: PharmacyFieldsModel) {
+        pharmacyLocalDataSource.createPharmacy(pharmacy)
+    }
 }

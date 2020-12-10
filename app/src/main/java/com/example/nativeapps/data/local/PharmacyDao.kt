@@ -20,4 +20,11 @@ interface PharmacyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(list: List<Pharmacy>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(pharmacy: Pharmacy)
+
+    @Query("SELECT recordid FROM pharmacies ORDER BY recordid DESC LIMIT 1")
+    suspend fun getLastId(): String
+
 }
