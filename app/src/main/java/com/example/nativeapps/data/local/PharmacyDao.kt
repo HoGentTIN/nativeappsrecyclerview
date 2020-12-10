@@ -26,5 +26,4 @@ interface PharmacyDao {
 
     @Query("SELECT recordid FROM pharmacies ORDER BY recordid DESC LIMIT 1")
     suspend fun getLastId(): String
-
 }

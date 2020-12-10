@@ -15,7 +15,4 @@ data class PharmacyAndFields(
 
     @Ignore
     fun generateAddress() = "${fields.street} ${fields.number} ${fields.zip} ${fields.city}"
-
-
 }
-

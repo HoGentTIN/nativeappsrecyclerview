@@ -15,6 +15,7 @@ import com.example.nativeapps.adapters.PharmacyAdapter
 import com.example.nativeapps.adapters.PharmacyClickListener
 import com.example.nativeapps.data.local.PharmacyAndFields
 import com.example.nativeapps.databinding.FragmentPharmacyOverviewBinding
+import com.example.nativeapps.util.PharmacyCountingIdlingResource
 import com.example.nativeapps.util.Status.ERROR
 import com.example.nativeapps.util.Status.LOADING
 import com.example.nativeapps.util.Status.SUCCESS
@@ -49,8 +50,8 @@ class PharmacyOverviewFragment : Fragment(), PharmacyClickListener {
                 it?.let { resource ->
                     when (resource.status) {
                         SUCCESS -> {
-                            showProgress(false)
                             adapter.submitList(resource.data)
+                            showProgress(false)
                         }
                         LOADING -> {
                             showProgress(true)
@@ -68,11 +69,13 @@ class PharmacyOverviewFragment : Fragment(), PharmacyClickListener {
     private fun showProgress(b: Boolean) {
         if (b) {
             if (!loadingDialogFragment.isAdded) {
+                PharmacyCountingIdlingResource.increment()
                 loadingDialogFragment.show(requireActivity().supportFragmentManager, "loader")
             }
         } else {
             if (loadingDialogFragment.isAdded) {
                 loadingDialogFragment.dismissAllowingStateLoss()
+                PharmacyCountingIdlingResource.decrement()
             }
         }
     }
